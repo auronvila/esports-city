@@ -13,6 +13,12 @@ builder.Services.AddDbContext<DataContex> (opt =>
 {
     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+//specified the cors because we were getting an cors error from ui saying we cannot fetch data from api it is not allowed from this domain 
+builder.Services.AddCors(opt => {
+    opt.AddPolicy("CorsPolicy",policy =>{
+        policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:3000");
+    });
+});
 
 var app = builder.Build();
 
@@ -22,6 +28,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+//checking the cors if it is not avalible
+app.UseCors("CorsPolicy");
 
 app.UseAuthorization();
 
