@@ -10,7 +10,7 @@ using Persistence;
 
 namespace Persistence.Migrations
 {
-    [DbContext(typeof(DataContex))]
+    [DbContext(typeof(DataContext))]
     [Migration("20230515143346_AddCategoryToActivity")]
     partial class AddCategoryToActivity
     {
