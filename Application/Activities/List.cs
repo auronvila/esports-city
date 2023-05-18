@@ -18,13 +18,12 @@ namespace Application.Activities
 
             public Handler(DataContext context)
             {
-            _context = context;
-                
+                 _context = context;
             }
 
             public async Task<List<Activity>> Handle(Query request, CancellationToken token)
             {
-                return await _context.Activities.ToListAsync();
+                return await _context.Activities.ToListAsync<Activity>();
             }
         }
     }
