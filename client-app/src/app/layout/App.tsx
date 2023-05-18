@@ -18,11 +18,25 @@ function App() {
     .catch(error => console.log(error));
   }, [])
 
+
+  function handleSelectActivity(id:string){
+    setSelectedActivity(activities.find(x => x.id === id));
+  }
+
+  function handleCancelSelectActivity(){
+    setSelectedActivity(undefined);
+  }
+
   return (
     <Fragment>
       <NavBar/>
       <Container style={{ marginTop: '7em' }}>
-        <ActivityDashboard activities={activities} />
+        <ActivityDashboard 
+        activities={activities}
+        selectedActivity={selectedActivity}
+        selectActivity={handleSelectActivity} 
+        cancelSelectActivity={handleCancelSelectActivity}
+        />
       </Container>
     </Fragment>
   );
