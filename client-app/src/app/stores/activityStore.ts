@@ -9,7 +9,7 @@ export default class ActivityStore{
     selectedActivities : Activity | undefined = undefined ;
     editMode = false;
     loading = false;
-    loadingInitial = true;
+    loadingInitial = false;
 
     constructor(){
         makeAutoObservable(this)
@@ -23,11 +23,11 @@ export default class ActivityStore{
     } 
 
     loadActivities = async () => {
+        this.setLoadingInitial(true)
         try {
             const activities = await agent.Activities.list();
                 activities.forEach((activity: Activity) => {
-                    activity.date = activity.date.split('T')[0];
-                    this.activityRegistry.set(activity.id,activity);
+                    this.setActivity(activity)
                  })
             this.setLoadingInitial(false)
         } catch (error) {
@@ -55,6 +55,7 @@ export default class ActivityStore{
 
     closeForm = () => {
         this.editMode = false;
+        console.log(this.editMode)
     }
 
     createActivity = async (activity: Activity) => {
@@ -115,5 +116,37 @@ export default class ActivityStore{
                 this.loading = false
             })
         }
+    }
+
+    loadActivity = async (id:string) => {
+        let activity = this.getActivty(id);
+        if(activity) {
+            this.selectedActivities = activity;
+            return activity;
+        }
+        else {
+            this.setLoadingInitial(true)
+
+            try {
+                activity = await agent.Activities.details(id)
+                this.setActivity(activity);
+                runInAction(() =>this.selectedActivities = activity);
+                this.setLoadingInitial(false)
+                return activity;
+            } catch (error) {
+                console.log(error)
+                this.setLoadingInitial(false)
+            }
+        }
+    }
+
+    private setActivity = (activity: Activity) => {
+        activity.date = activity.date.split('T')[0];
+        this.activityRegistry.set(activity.id,activity);
+    }
+
+
+    private getActivty = (id: string) => {
+        return this.activityRegistry.get(id);
     }
 }
