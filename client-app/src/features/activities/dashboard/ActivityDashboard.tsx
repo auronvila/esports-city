@@ -6,6 +6,7 @@ import ActivityForm from '../form/ActivityForm';
 import { useStore } from '../../../app/stores/store';
 import { observer } from 'mobx-react-lite';
 import LoadingComponent from '../../../app/layout/LoadingComponent';
+import ActivityFilter from './ActivityFilter';
 
 
 export default observer( function ActivityDashboard() {
@@ -25,10 +26,7 @@ export default observer( function ActivityDashboard() {
                 <ActivityList />
             </Grid.Column>
             <Grid.Column width='6'>
-                {selectedActivities && editMode &&
-                <ActivityDetails/>}
-                 {editMode && 
-                <ActivityForm/>}
+                <ActivityFilter/>
             </Grid.Column>
         </Grid>
     )
