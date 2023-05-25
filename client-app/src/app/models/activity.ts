@@ -3,7 +3,7 @@ export interface Activity {
 
         title:string;
 
-        date:string;
+        date:Date | null;
 
         description:string;
 
