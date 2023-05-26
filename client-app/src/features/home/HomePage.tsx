@@ -6,7 +6,7 @@ export default function HomePage(){
         <Segment inverted textAlign="center" vertical className="masthead" >
             <Container text >
                 <Header as='h1'>
-                    <Image size="massive" src='/client-app/public/Assets/logo.png' alt='logo' style={{marginBottom: 12}} />
+                    <Image size="massive" src='/Assets/categoryImages/logo.png' alt='logo' style={{marginBottom: 12}} />
                     Reactivities
                 </Header>
                 <Header as='h2' inverted content='Welcome To Reactivities' />

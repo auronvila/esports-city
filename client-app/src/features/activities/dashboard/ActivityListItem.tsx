@@ -26,7 +26,7 @@ export default  function ActivityListItem({activity}: Porps ){
             <Segment>
                 <Item.Group>
                     <Item>
-                        <Item.Image size='tiny' circular src='/Assets/user.png'/>
+                        <Item.Image size='tiny' circular src='/user.png'/>
                         <Item.Content>
                             <Item.Header as={Link} to={`/activities/${activity.id}`}>
                                 {activity.title}

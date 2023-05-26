@@ -16,7 +16,7 @@ export default observer(function ActivityDetailedChat() {
             <Segment attached>
                 <Comment.Group>
                     <Comment>
-                        <Comment.Avatar alt='icon' src='/assets/user.png'/>
+                        <Comment.Avatar alt='icon' src='/user.png'/>
                         <Comment.Content>
                             <Comment.Author as='a'>Matt</Comment.Author>
                             <Comment.Metadata>
@@ -30,7 +30,7 @@ export default observer(function ActivityDetailedChat() {
                     </Comment>
 
                     <Comment>
-                        <Comment.Avatar alt='icon' src='/client-app/public/user.png'/>
+                        <Comment.Avatar alt='icon' src='/user.png'/>
                         <Comment.Content>
                             <Comment.Author as='a'>Joe Henderson</Comment.Author>
                             <Comment.Metadata>
