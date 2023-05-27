@@ -22,6 +22,7 @@ axios.interceptors.response.use( async response => {
 
     const {data, status, config} = error.response as AxiosResponse;
 
+
     switch (status) {
         case 400:
             if(config.method == 'get' && data.errors.hasOwnProperty('id')){
@@ -59,6 +60,12 @@ axios.interceptors.response.use( async response => {
 })
 
 const responsebody = <T> (response : AxiosResponse <T>) => response.data;
+
+axios.interceptors.request.use(config => {
+    const token = store.commonStore.token;
+    if(token && config.headers) config.headers.Authorization = `Bearer ${token}`
+    return config 
+})
 
 const requests = {
     get : <T> (url : string) => axios.get<T>(url).then(responsebody),

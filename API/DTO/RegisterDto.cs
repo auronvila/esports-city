@@ -12,7 +12,7 @@ namespace API.DTO
         [EmailAddress]
         public string Email { get; set; }
         [Required]
-        [RegularExpression("(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$", ErrorMessage ="Password must be more complex")]
+        [RegularExpression(@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{4,8}$", ErrorMessage = "Password must be more complex")]
         public string Password { get; set; }
         [Required]
         public string DisplayName { get; set; }
