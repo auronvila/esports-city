@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom/client';
 import 'react-datepicker/dist/react-datepicker.module.css'
 import 'react-calendar/dist/Calendar.css';
+import 'react-toastify/dist/ReactToastify.min.css'
 import 'semantic-ui-css/semantic.min.css';
 import './app/layout/index.css';
 import reportWebVitals from './reportWebVitals';
